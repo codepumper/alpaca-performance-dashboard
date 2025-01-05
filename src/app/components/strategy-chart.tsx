@@ -37,7 +37,7 @@ const CandlestickWick = ({ data }: { data: OHLCData[] }) => {
   ))
 }
 
-export function StrategyChart({ ohlcData, indicators, relationships }: StrategyChartProps) {
+export function StrategyChart({ ohlcData, indicators }: StrategyChartProps) {
   const chartData = useMemo(() => {
     return ohlcData.map((data, index) => {
       const indicatorValues = indicators.reduce((acc, indicator) => {
@@ -53,10 +53,10 @@ export function StrategyChart({ ohlcData, indicators, relationships }: StrategyC
         ...data,
         ...indicatorValues,
         signal,
-        index, // Add index for x-axis positioning
+        index,
       }
     })
-  }, [ohlcData, indicators, relationships])
+  }, [ohlcData, indicators])
 
   return (
     <ResponsiveContainer width="100%" height={400}>
